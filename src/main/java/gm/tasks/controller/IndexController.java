@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,8 +62,9 @@ public class IndexController implements Initializable {
         tasksLists.clear();
         tasksLists.addAll(taskService.tasksList());
         taskTable.setItems(tasksLists);
-
     }
+
+
 }
 
 
