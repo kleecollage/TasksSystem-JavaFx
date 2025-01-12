@@ -21,4 +21,36 @@ public class Task {
     private String nameTask;
     private String responsible;
     private String status;
+
+    public Integer getIdTask() {
+        return idTask;
+    }
+
+    public void setIdTask(Integer idTask) {
+        this.idTask = idTask;
+    }
+
+    public String getNameTask() {
+        return nameTask;
+    }
+
+    public void setNameTask(String nameTask) {
+        this.nameTask = nameTask;
+    }
+
+    public String getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(String responsible) {
+        this.responsible = responsible;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
