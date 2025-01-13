@@ -4,6 +4,7 @@ import gm.tasks.model.Task;
 import gm.tasks.service.TaskService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -30,12 +31,21 @@ public class IndexController implements Initializable {
     private TableColumn<Task, String> nameTaskColumn;
 
     @FXML
-    private TableColumn<Task, String> responsiveTaskColumn;
+    private TableColumn<Task, String> responsibleTaskColumn;
 
     @FXML
     private TableColumn<Task, String> statusTaskColumn;
 
     private final ObservableList<Task> tasksLists = FXCollections.observableArrayList();
+
+    @FXML
+    private TextField nameTaskText;
+
+    @FXML
+    private TextField responsibleTaskText;
+
+    @FXML
+    private TextField statusTaskText;
 
     public IndexController(TaskService taskService) {
         this.taskService = taskService;
@@ -51,7 +61,7 @@ public class IndexController implements Initializable {
     private void configColumns() {
         idTaskColumn.setCellValueFactory(new PropertyValueFactory<>("idTask"));
         nameTaskColumn.setCellValueFactory(new PropertyValueFactory<>("nameTask"));
-        responsiveTaskColumn.setCellValueFactory(new PropertyValueFactory<>("responsible"));
+        responsibleTaskColumn.setCellValueFactory(new PropertyValueFactory<>("responsible"));
         statusTaskColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         taskTable.setItems(tasksLists);
@@ -65,6 +75,41 @@ public class IndexController implements Initializable {
     }
 
 
+    public void addTask(ActionEvent actionEvent) {
+        if (nameTaskText.getText().isEmpty()) {
+            showMessage("Validation Error", "Must provides a name for the task");
+            nameTaskText.requestFocus();
+            return;
+        }
+        else {
+            var task = new Task();
+            collectFormData(task);
+            taskService.saveTask(task);
+            showMessage("Information", "Task added successfully");
+            clearForm();
+            listTasks();
+        }
+    }
+
+    private void collectFormData(Task task) {
+        task.setNameTask(nameTaskText.getText());
+        task.setResponsible(responsibleTaskText.getText());
+        task.setStatus(statusTaskText.getText());
+    }
+
+    private void clearForm() {
+        nameTaskText.clear();
+        responsibleTaskText.clear();
+        statusTaskText.clear();
+    }
+
+    private void showMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
 
 

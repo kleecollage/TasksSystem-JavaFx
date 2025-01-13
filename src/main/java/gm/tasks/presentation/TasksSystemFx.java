@@ -24,14 +24,19 @@ public class TasksSystemFx extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader =
-                new FXMLLoader(TasksApplication.class.getResource("/templates/index.fxml"));
+        try {
+            FXMLLoader loader =
+                    new FXMLLoader(TasksApplication.class.getResource("/templates/index.fxml"));
 
-        loader.setControllerFactory(applicationContext::getBean);
-        Scene scene = new Scene(loader.load());
+            loader.setControllerFactory(applicationContext::getBean);
+            Scene scene = new Scene(loader.load());
 
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Platform.exit();
+        }
     }
 
     @Override
