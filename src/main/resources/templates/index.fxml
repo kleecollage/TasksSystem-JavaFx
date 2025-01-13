@@ -10,7 +10,7 @@
          <font>
             <Font name="JetBrains Mono Bold" size="24.0" />
          </font></Label>
-      <TableView fx:id="taskTable" layoutX="208.0" layoutY="100.0" prefHeight="200.0" prefWidth="369.0">
+      <TableView fx:id="taskTable" layoutX="208.0" layoutY="100.0" onMouseClicked="#loadTaskForm" prefHeight="200.0" prefWidth="369.0">
         <columns>
           <TableColumn fx:id="idTaskColumn" prefWidth="57.0" text="ID" />
           <TableColumn fx:id="nameTaskColumn" prefWidth="142.0" text="Task" />
@@ -40,9 +40,9 @@
       <AnchorPane layoutX="94.0" layoutY="321.0" prefHeight="48.0" prefWidth="413.0">
          <children>
             <Button fx:id="addButton" layoutY="11.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #1d3557;" text="   Add   " textFill="#f1faee" />
-            <Button fx:id="modifyButton" layoutX="107.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: #1d3557;" text="  Modify  " textFill="#f1faee" />
-            <Button fx:id="removeButton" layoutX="231.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: #e63946;" text="Remove" textFill="#f1faee" />
-            <Button fx:id="clearButton" layoutX="339.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: #ffd60a;" text="Clear Form" />
+            <Button fx:id="modifyButton" layoutX="107.0" layoutY="11.0" mnemonicParsing="false" onAction="#modifyTask" style="-fx-background-color: #1d3557;" text="  Modify  " textFill="#f1faee" />
+            <Button fx:id="removeButton" layoutX="231.0" layoutY="11.0" mnemonicParsing="false" onAction="#removeTask" style="-fx-background-color: #e63946;" text="Remove" textFill="#f1faee" />
+            <Button fx:id="clearButton" layoutX="339.0" layoutY="11.0" mnemonicParsing="false" onAction="#clearForm" style="-fx-background-color: #ffd60a;" text="Clear Form" />
          </children>
       </AnchorPane>
    </children>

@@ -13,7 +13,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+// @ToString
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,5 +52,15 @@ public class Task {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "idTask=" + idTask +
+                ", nameTask='" + nameTask + '\'' +
+                ", responsible='" + responsible + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
